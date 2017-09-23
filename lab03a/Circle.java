@@ -5,6 +5,13 @@
 public class Circle extends NewShape {
     
 
+    /**
+     
+                SALAM OLSUN MELLIME
+     
+     */
+    
+    
     //properties
     double radius;
     final double pi = Math.PI;
