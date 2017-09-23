@@ -3,7 +3,7 @@
 //1 march, 2016
 
 public class Rectangle extends NewShape {
-   
+   // loloagagauygskagdfhgasdavfoiasfh≈
     //properties
      double width;
      double length; 
