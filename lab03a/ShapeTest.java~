@@ -1,0 +1,130 @@
+import java.util.*;
+//Bayram Muradov
+//Lab 03
+//1 march, 2016
+
+public class ShapeTest {
+  public static void main(String[] args){
+    
+    Scanner scan = new Scanner(System.in);
+    //constants& variables
+    
+    //menu inputs
+    int input;
+    int input2;
+    int exit;
+    int input4;
+    int input6;
+    //rectangle
+    double inputRleng;
+    double inputWidth;
+    //square
+    double squareL;
+    //int squareAr;
+    //circle
+    double circRus;
+    //set
+    int setx;
+    int sety;
+    
+    ShapeContainer list = new ShapeContainer();
+    
+    //program code
+    do {
+      
+      System.out.println("::choose an option::");
+      System.out.println("<1> add shape ");
+      System.out.println("<2> print areas");
+      System.out.println("<3> show & set shapes");
+      System.out.println("<4> select shapes");
+      System.out.println("<5> delete shapes");
+      System.out.println("<6> set shapes ");
+      System.out.println("<0> quit");
+    
+      
+      System.out.println();
+      
+      input = scan.nextInt();
+      
+      
+      if(input == 1) {
+        System.out.println("<enter shape>");
+        System.out.println("1.rectangle");
+        System.out.println("2.square");
+        System.out.println("3.circle");
+        System.out.println();
+        input2 = scan.nextInt();
+        
+        if(input2 == 1) {
+          System.out.println("enter length");
+          inputRleng = scan.nextDouble();
+          System.out.println("enter width");
+          inputWidth = scan.nextDouble();
+          list.add(new Rectangle(inputRleng, inputWidth));
+        }
+        if(input2 == 2) {
+          System.out.println("enter length of a side");
+          squareL = scan.nextDouble();
+          list.add(new Square(squareL));
+        }
+        if(input2 == 3) {
+          System.out.println("enter the radius");
+          circRus = scan.nextDouble();
+          list.add(new Circle(circRus));
+        }
+      }
+      
+      if(input == 2) {
+        for(int i =0; i<list.size(); i++) {
+          System.out.println(list.get(i).getArea());
+        }
+      }
+      
+      if(input == 3) {
+        System.out.println( list.toString());
+      }
+      
+      if(input == 4) {
+        do { 
+          System.out.println( list.toString()); 
+          System.out.println( "select shape. -1 to quit"); 
+          input4 = scan.nextInt(); 
+          if ( input4 >= 0) 
+          list.get(input4).setSelected(true); 
+        } while ( input4 != -1); 
+      }
+      
+      if ( input == 5) { 
+        list.remove2(); 
+        System.out.println( "removed"); 
+      }
+      
+      if( input == 6) {
+        System.out.println( list.toString()); 
+        do 
+        { 
+          System.out.println( " enter shape index. -1 to quit"); 
+          input6 = scan.nextInt(); 
+           
+          if (input6 >= 0) 
+          { 
+            System.out.println( "enter x coordinate"); 
+            setx = scan.nextInt(); 
+            System.out.println( "enter y coordinate"); 
+            sety = scan.nextInt(); 
+             
+            list.get( input6).setLocation( setx, sety); 
+             
+            System.out.println( list.toString()); 
+          } 
+        } while ( input6 != -1);
+      
+    }
+   }
+    while(input != 0);
+    
+    if(input == 0) {
+      System.out.println("bye.");  
+    }   
+  }
+}

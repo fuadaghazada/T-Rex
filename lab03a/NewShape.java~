@@ -1,0 +1,7 @@
+//Bayram Muradov
+//Lab03
+
+public abstract class NewShape extends Shape implements Selectable { 
+   //this class has been created in order to make remove2() method work 
+} 
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Circle.java" package="" timestamp="01-Mar-2016 22:49:43">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="ShapeTest.java" package="" timestamp="01-Mar-2016 22:34:13">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="Locatable.java" package="" timestamp="01-Mar-2016 22:49:43">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="Rectangle.java" package="" timestamp="01-Mar-2016 22:49:43">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="NewShape.java" package="" timestamp="01-Mar-2016 22:49:43">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="ShapeContainer.java" package="" timestamp="01-Mar-2016 22:49:43">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="Shape.java" package="" timestamp="01-Mar-2016 22:51:06">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="Selectable.java" package="" timestamp="01-Mar-2016 22:51:06">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+      <file name="Square.java" package="" timestamp="01-Mar-2016 22:51:06">
+        <select from="1133" to="1133"/>
+        <scroll column="523" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
