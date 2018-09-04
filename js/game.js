@@ -61,7 +61,7 @@ function Game()
     });
     
     // For mobile - touch screen
-    document.addEventListener('touchstart', function()
+    document.addEventListener('touchstart', function(event)
     {
         if(is_game_over)
         {
@@ -73,8 +73,22 @@ function Game()
         }
         else
         {
-            dino.jump();
+            if(event.changedTouches[0].pageX > window.innerWidth / 2)
+            {
+                dino.jump();
+            }
+            else
+            {
+                dino.is_down = true;
+                dino.gravity = 5.5;
+            }
         }
+    });
+
+    document.addEventListener('touchend', function(event)
+    {
+        dino.is_down = false;
+        dino.gravity = 2.5;
     });
 
     // Initialize elements
