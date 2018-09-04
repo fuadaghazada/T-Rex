@@ -59,7 +59,23 @@ function Game()
             dino.gravity = 2.5;
         }
     });
-
+    
+    // For mobile - touch screen
+    document.addEventListener('touchstart', function()
+    {
+        if(is_game_over)
+        {
+            game.init();
+        }
+        else if(!is_game_start)
+        {
+            is_game_start = true;
+        }
+        else
+        {
+            dino.jump();
+        }
+    });
 
     // Initialize elements
     this.init = function()
