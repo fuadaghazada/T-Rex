@@ -73,7 +73,7 @@ function Game()
         }
         else
         {
-            if(event.changedTouches[0].pageX > window.innerWidth / 2)
+            if(event.changedTouches[0].pageX > window.innerWidth / 2 && !dino.is_down)
             {
                 dino.jump();
             }
