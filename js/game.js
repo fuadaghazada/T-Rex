@@ -191,16 +191,23 @@ function Game()
         }
     };
 
-    // Render the game states in texts
+        // Render the game states in texts
     var render_game_states = function(color)
     {
         context.textAlign = "center";
         context.fillStyle = color;
         context.font = "20px 'Press Start 2P'";
 
+        var start_text;
+
         if(!is_game_start)
         {
-            context.fillText("Press space to start", canvas.width/2, canvas.height/2);
+            if(detectmob())
+                start_text = "Touch to start";
+            else
+                start_text = "Press space to start";
+
+            context.fillText(start_text, canvas.width/2, canvas.height/2);
         }
         else if(is_game_over)
         {
@@ -213,5 +220,15 @@ function Game()
     };
 }
 
+function detectmob()
+{
+    return ( navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i));
+}
 
 new Game().init();
