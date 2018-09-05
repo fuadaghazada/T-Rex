@@ -3,6 +3,9 @@ function ObstacleGenerator(ground_y)
     // Canvas
     canvas = document.getElementById('gc');
 
+    // Sound
+    var point_sfx = new sound("sounds/sfx_point.wav");
+
     // Max number of obstacles on the screen
     this.max = 5;
 
@@ -42,6 +45,7 @@ function ObstacleGenerator(ground_y)
         {
             this.obstacles[i].speed = speed;
         }
+        point_sfx.play();
     };
 
     // Update all the obstacles

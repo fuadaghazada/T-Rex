@@ -9,7 +9,7 @@ function Dino(ground)
     var img = new Image();
     img.src = "images/sprite_sheet.png";
 
-    // Spites
+    // Sprites
     var run1 = [{x: 1514, y: 0, width: 88, height: 97}, {x: 1602, y: 0, width: 88, height: 97}];
     var run2 = [{x: 1866, y: 38, width: 119, height: 58}, {x: 1985, y: 38, width: 119, height: 58}];
     var run = run1;
@@ -21,6 +21,11 @@ function Dino(ground)
     this.sprite_y = 0;
     this.sprite_width = 89;
     this.sprite_height = 97;
+
+
+    // Sound
+    var hit_sfx = new sound("sounds/sfx_hit.wav");
+    var jump_sfx = new sound("sounds/sfx_jump.wav");
 
     // Score
     this.score = 0;
@@ -50,6 +55,7 @@ function Dino(ground)
     {
         if(this.is_on_ground)
         {
+            jump_sfx.play();
             this.velocity_y -= this.jump_force;
             this.is_on_ground = false;
         }
@@ -71,6 +77,7 @@ function Dino(ground)
             if(head_collision || body_collision)
             {
                 this.is_dead = true;
+                hit_sfx.play();
                 return true;
             }
         }

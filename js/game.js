@@ -59,7 +59,7 @@ function Game()
             dino.gravity = 2.5;
         }
     });
-    
+
     // For mobile - touch screen
     document.addEventListener('touchstart', function(event)
     {
@@ -191,7 +191,7 @@ function Game()
         }
     };
 
-        // Render the game states in texts
+    // Render the game states in texts
     var render_game_states = function(color)
     {
         context.textAlign = "center";
