@@ -4,6 +4,9 @@ function Game()
     canvas = document.getElementById('gc');
     context = canvas.getContext('2d');
 
+    // Sound
+    var point_sfx = new sound("sounds/sfx_point.wav");
+
     var bg_color;
     var font_color;
 
@@ -155,6 +158,7 @@ function Game()
 
             if(dino.score != 0 && dino.score % 10 === 0)
             {
+                point_sfx.play();
                 speed += 0.1;
                 obstacles.update_speed(speed);
             }
