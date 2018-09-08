@@ -21,7 +21,8 @@ function Game()
     ground_y = canvas.height - 50;
 
     // Game States
-    high_score = 0;
+    high_score = getCookie('t_rex') ? getCookie('t_rex') : 0;
+    is_high_score = false;
     is_game_start = false;
     is_game_over = false;
 
@@ -106,6 +107,7 @@ function Game()
 
         is_game_start = false;
         is_game_over = false;
+        is_high_score = false;
 
         obstacles = new ObstacleGenerator(ground_y);
         dino = new Dino(ground_y);
@@ -142,6 +144,11 @@ function Game()
             dino.update(obstacles.obstacles);
             is_game_over = dino.check_collision(obstacles.obstacles);
         }
+        else if(is_high_score)
+        {
+            setCookie('t_rex', high_score, 10);
+            is_high_score = false;
+        }
     }
 
     // Updating the score
@@ -151,7 +158,10 @@ function Game()
         {
             // High Score
             if(high_score <= dino.score)
+            {
+                is_high_score = true;
                 high_score++;
+            }
 
             dino.score++;
 
@@ -239,6 +249,36 @@ function detectmob()
             || navigator.userAgent.match(/iPod/i)
             || navigator.userAgent.match(/BlackBerry/i)
             || navigator.userAgent.match(/Windows Phone/i));
+}
+
+function setCookie(cname, cvalue, exdays)
+{
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    console.log(cname + "=" + cvalue + ";" + expires + ";");
+
+    document.cookie = cname + "=" + cvalue + ";expires=" + expires + ";";
+}
+
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+
+    for(var i = 0; i < ca.length; i++)
+    {
+        var c = ca[i];
+        while (c.charAt(0) == ' ')
+        {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0)
+        {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 new Game().init();
