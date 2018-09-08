@@ -284,4 +284,7 @@ function getCookie(cname)
     return "";
 }
 
-new Game().init();
+window.onload
+{
+    new Game().init();
+}
