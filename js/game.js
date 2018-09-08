@@ -230,6 +230,9 @@ function Game()
         }
         else if(is_game_over)
         {
+            if(dino.score >= high_score)
+                context.fillText("New High Score!", canvas.width/2, canvas.height/2 + 30);
+
             context.fillText("Game Over!", canvas.width/2, canvas.height/2);
         }
 
