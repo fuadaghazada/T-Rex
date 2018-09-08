@@ -21,6 +21,7 @@ function Game()
     ground_y = canvas.height - 50;
 
     // Game States
+    high_score = 0;
     is_game_start = false;
     is_game_over = false;
 
@@ -148,6 +149,10 @@ function Game()
     {
         if(is_game_start && !is_game_over)
         {
+            // High Score
+            if(high_score <= dino.score)
+                high_score++;
+
             dino.score++;
 
             if(dino.score != 0 && dino.score % 100 === 0)
@@ -221,6 +226,7 @@ function Game()
         context.textAlign = "right";
         context.font = "10px 'Press Start 2P'";
         context.fillText("Score: " + dino.score, canvas.width - 50, 50);
+        context.fillText("High Score: " + high_score, canvas.width - 50, 70);
     };
 }
 
