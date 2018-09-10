@@ -259,8 +259,6 @@ function setCookie(cname, cvalue, exdays)
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
-    console.log(cname + "=" + cvalue + ";" + expires + ";");
-
     document.cookie = cname + "=" + cvalue + ";expires=" + expires + ";";
 }
 
@@ -286,5 +284,21 @@ function getCookie(cname)
 
 window.onload
 {
-    new Game(1).init();
+    var dates = [new Date("9/10/2018"), new Date("9/9/2018")];
+
+    function check_special_date()
+    {
+        for(var i = 0; i < dates.length; i++)
+        {
+            if(dates[i].getMonth() === new Date().getMonth() && dates[i].getDate() === new Date().getDate())
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    var game = (check_special_date()) ? new Game(1) : new Game();
+    game.init();
 }
