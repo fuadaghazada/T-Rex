@@ -1,4 +1,4 @@
-function ObstacleGenerator(ground_y)
+function ObstacleGenerator(ground_y, b_mode = 0)
 {
     // Canvas
     canvas = document.getElementById('gc');
@@ -19,7 +19,7 @@ function ObstacleGenerator(ground_y)
     {
         if(this.obstacles.length === 0)
         {
-            var obstacle = new Obstacle(canvas.width, ground_y);
+            var obstacle = new Obstacle(canvas.width, ground_y, b_mode);
             obstacle.speed = speed;
             this.obstacles.push(obstacle);
         }
@@ -28,7 +28,7 @@ function ObstacleGenerator(ground_y)
             if(this.obstacles.length < this.max)
             {
                 var random_distance = Math.random() * (this.max_distance - this.min_distance) + this.min_distance;
-                var obstacle = new Obstacle(this.obstacles[this.obstacles.length - 1].x + random_distance, ground_y);
+                var obstacle = new Obstacle(this.obstacles[this.obstacles.length - 1].x + random_distance, ground_y, b_mode);
                 obstacle.speed = speed;
                 this.obstacles.push(obstacle);
             }

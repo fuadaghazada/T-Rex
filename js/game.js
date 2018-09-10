@@ -1,4 +1,4 @@
-function Game()
+function Game(birthday_mode = 0)
 {
     // Properties
     canvas = document.getElementById('gc');
@@ -109,8 +109,8 @@ function Game()
         is_game_over = false;
         is_high_score = false;
 
-        obstacles = new ObstacleGenerator(ground_y);
-        dino = new Dino(ground_y);
+        obstacles = new ObstacleGenerator(ground_y, birthday_mode);
+        dino = new Dino(ground_y, birthday_mode);
 
         bg_color = (Math.floor(Math.random() * 2) == 0) ? 'skyblue' : 'black';
         font_color = (bg_color === 'skyblue') ? "black" : "white";
@@ -156,14 +156,14 @@ function Game()
     {
         if(is_game_start && !is_game_over)
         {
+            dino.score++;
+
             // High Score
             if(high_score <= dino.score)
             {
                 is_high_score = true;
-                high_score++;
+                high_score = dino.score;
             }
-
-            dino.score++;
 
             if(dino.score != 0 && dino.score % 100 === 0)
             {
@@ -286,5 +286,5 @@ function getCookie(cname)
 
 window.onload
 {
-    new Game().init();
+    new Game(1).init();
 }

@@ -1,4 +1,4 @@
-function Dino(ground)
+function Dino(ground, b_mode = 0)
 {
     // Canvas
     canvas = document.getElementById('gc');
@@ -8,6 +8,15 @@ function Dino(ground)
     // Image
     var img = new Image();
     img.src = "images/sprite_sheet.png";
+
+    // BIRTHDAY-MODE
+    var birthday_img = new Image();
+    birthday_img.src = "images/birthday_hat.png";
+    var b_sp_width = 32;
+    var b_sp_height = 54;
+    var offset = (!this.is_down) ? b_sp_width : b_sp_width + 20;
+
+
 
     // Sprites
     var run1 = [{x: 1514, y: 0, width: 88, height: 97}, {x: 1602, y: 0, width: 88, height: 97}];
@@ -26,6 +35,7 @@ function Dino(ground)
     // Sound
     var hit_sfx = new sound("sounds/sfx_hit.wav");
     var jump_sfx = new sound("sounds/sfx_jump.wav");
+    var eat_sfx = new sound("sounds/eat.mp3");
 
     // Score
     this.score = 0;
@@ -36,6 +46,7 @@ function Dino(ground)
     /* Physics */
 
     // Properties
+
     this.width = (!this.is_down) ? 70 : 90;
     this.height = (!this.is_down) ? 77 : 43.8;
 
@@ -76,9 +87,18 @@ function Dino(ground)
 
             if(head_collision || body_collision)
             {
-                this.is_dead = true;
-                hit_sfx.play();
-                return true;
+                if(obstacle.type !== 3)
+                {
+                    this.is_dead = true;
+                    hit_sfx.play();
+                    return true;
+                }
+                else
+                {
+                    eat_sfx.play();
+                    dino.score += 10;
+                    obstacles.splice(i, 1);
+                }
             }
         }
         return false;
@@ -103,7 +123,7 @@ function Dino(ground)
     this.render = function(context)
     {
         // context.fillStyle = 'black';
-        // context.fillRect(this.x, this.y, this.width, this.height/3);
+        // context.fillRect(this.x, this.y, this.width, this.height);
         // context.fillRect(this.x + this.width/4 - 5, this.y, this.width/2, this.height);
 
         if(this.is_dead)
@@ -116,6 +136,10 @@ function Dino(ground)
             this.height = 77;
         }
 
+        if(b_mode !== 0)
+            context.drawImage(birthday_img, this.x + offset, this.y - (b_sp_height - 5), b_sp_width, b_sp_height);
+
+
         context.drawImage(img, this.sprite_x, this.sprite_y, this.sprite_width, this.sprite_height, this.x, this.y, this.width, this.height);
     };
 
@@ -127,7 +151,9 @@ function Dino(ground)
             this.width = (!this.is_down) ? 70 : 90;
             this.height = (!this.is_down) ? 77 : 43;
 
+            offset = (!this.is_down) ? b_sp_width : b_sp_width + 20;
             run = (this.is_down) ? run2 : run1;
+
 
             this.sprite_x = run[current].x;
             this.sprite_y = run[current].y;
