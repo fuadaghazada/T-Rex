@@ -284,7 +284,7 @@ function getCookie(cname)
 
 window.onload
 {
-    var dates = [new Date("9/10/2018"), new Date("9/9/2018"), new Date("8/1/2018"), new Date("9/20/2018")];
+    var dates = [new Date("9/10/2018"), new Date("9/9/2018"), new Date("8/1/2018"), new Date("09/20/2018")];
 
     function check_special_date()
     {
